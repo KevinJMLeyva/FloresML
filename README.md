@@ -1,4 +1,4 @@
-# Clasificador de flores
+# Clasificador de flores Kevin Josué Martínez Leyva A01067611
 
 ## Descripción del proyecto
 
