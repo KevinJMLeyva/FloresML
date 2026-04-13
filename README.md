@@ -9,11 +9,13 @@ Se busca imitar funciones como las que poseen aplicaciones como “google photos
 ## Descripción del “dataset”
 
 El “dataset” utilizado proviene de [Flower Classifiaction](https://www.kaggle.com/datasets/supriyoain/flower-classification)  el cual contiene 17229 imágenes, todas poseen un tamaño de 256x256, se ecuentran clasificadas en 19 clases. No todas las clases poseen la misma cantidad de imágenes, la distribución original del dataset se puede observar en la siguiente gráfica y tabla.
+
 <img width="715" height="444" alt="Captura de pantalla 2026-04-12 213927" src="https://github.com/user-attachments/assets/1d80fbd0-c02f-45fa-862a-9abb2adebc07" />
 
 <img width="461" height="460" alt="Captura de pantalla 2026-04-12 220131" src="https://github.com/user-attachments/assets/3c366fc5-dabd-42b8-a131-1522f52deb67" />
 
 Para generar un mejor balance entre clases se eliminó aquellas clases que su porcentaje de representación sea menor a 5.4%, es un porcentaje alto, pero este porcentaje logró generar una distribución en donde las diferencia entre el porcentaje de representación ideal y el real posee una diferencia máxima de 0.35%. En la siguiente gráfica y tabla se puede observar la nueva distribución del dataset.
+
 <img width="462" height="334" alt="Captura de pantalla 2026-04-12 221007" src="https://github.com/user-attachments/assets/ecc94b00-4213-466a-a547-4f709df79290" />
 <img width="715" height="445" alt="Captura de pantalla 2026-04-12 221014" src="https://github.com/user-attachments/assets/c83a0dde-4aac-4c8c-855e-2a99d5aacac4" />
 
