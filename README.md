@@ -31,11 +31,13 @@ Con el “dataset” balanceado se realizo la separación de los datos de “tra
 Para incrementar la cantidad de datos (imágenes) con las que se entrenará al modelo se utilizaron técnicas de “data augmentation” que describiré a continuación:
 
 - “Rescaling”: Todas las imágenes fueron normalizadas a un rango de 0 a 1, esto se logró dividiendo cada píxel entre 255.
-- “Resizing”: Las imágenes se convirtieron a un tamaño de 256x256 pixeles, para asegurar su consistencia.
+- “Resizing”: Las imágenes se convirtieron a un tamaño de 120x120 pixeles, para mejorar la velocidad de entrenamiento del modelo.
 - “Rotation”: Las imágenes fueron rotadas de manera aleatoria entre 10 y -10 grados.
 - “Width shift”: Las imágenes se desplazaron un 20% de su ancho de manera horizontal.
 - “Zoom”: Un zoom de entre 0.7 a 1. 3 del tamaño original.
 - “Horizontal flip”: Se invirtió de manera horizontal a las imágenes, de forma aleatoria.
+
+La razón de selección de estos filtros se debe a que estos solo alteran la geometría de las imágenes, representando la variedad de perspectiva, tamaño o posición que pueden poseer las flores en la vida real. Se excluyeron filtros de corrección de color, ya que el color de las flores es algo crucial en su clasificación y pueden afectar al resultado que se busca.
 
 Esto genera nuevas imágenes que se suman al conjunto ya establecido de train, con la finalidad de enseñar de mejor manera al modelo. Estos métodos fueron aplicados en el código contenido en “Flores Data augmentation.ipynb”.
 
