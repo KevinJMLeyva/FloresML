@@ -45,7 +45,7 @@ Esto genera nuevas imágenes que se suman al conjunto ya establecido de train, c
 
 
 ## Modelos
-Primera iteración:
+### Primera iteración:
 El primer modelo y sus resultados puede ser consultado en el archivo "Flores_Data_augmentation_and_first_model.ipynb" que se encuentra en este repositorio, o en el siguiente notebook:
 [First model notebook](https://colab.research.google.com/drive/1A9FnXfncx8jqNY-BCPW2m2FVZmCh0fFB?usp=sharing)
 
@@ -65,9 +65,7 @@ El modelo es una versión muy simplicidad de la arquitectura de VGG. Ya que en v
 - Capa Dropout: Con tasa de 0.5
 - Capa Densa: Con 13 unidades y función de activación softmax
 
-Resultados:
-<img width="791" height="704" alt="Captura de pantalla 2026-04-19 225206" src="https://github.com/user-attachments/assets/ca75b488-ac94-4382-9b82-aef014cf4bfb" />
-
+### Resultados:
 La selección de métricas para la evaluación del modelo se basa en “An Introduction to ROC Analysis” de Fawcett (2005) el cual menciona que el “acurracy” no abarca toda la complejidad de problemas de clasificación, ya que puede existir diferentes orígenes de los errores o desbalanceo en los datos. Es por esto que el modelo se evaluó el modelo utilizando las siguientes métricas:
 
  - Precisión: Determina que tan acertado es el modelo cuando predice una "positive label", en el caso de la multiclase se determina que todas aquellas clases que no son la que corresponde son "negative, en vez de usar un enfoque binario como es el caso de usar solo dos clases.
@@ -76,6 +74,11 @@ La selección de métricas para la evaluación del modelo se basa en “An Intro
  - Acurracy: Es la proporción de precciones correctas entre predicciones totales.
 
 El soporte solo nos indica el número de ejemplos reales de la clase, no es una métrica.
+
+#### Matriz de confusión:
+
+<img width="791" height="704" alt="Captura de pantalla 2026-04-19 225206" src="https://github.com/user-attachments/assets/ca75b488-ac94-4382-9b82-aef014cf4bfb" />
+
   
 | Clase | Precisión | Recall | F1-score | Soporte |
 | ----- | --------- | ------ | -------- | ------- |
@@ -105,7 +108,7 @@ El soporte solo nos indica el número de ejemplos reales de la clase, no es una 
 | Weighted Avg (Recall)    | 0.59  |
 | Weighted Avg (F1-score)  | 0.58  |
 
-Conclusiones:
+### Conclusiones:
 
 El “accuracy” del modelo es de 0.59, es decir que, aproximadamente, acierta cada 6 de 10 imágenes, un rendimiento intermedio, además el tanto el “recall”, “precision” y “F1” son prácticamente iguales lo que indica que el modelo no se encuentra fuertemente sesgado.	
 
