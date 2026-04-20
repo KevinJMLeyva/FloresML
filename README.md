@@ -68,7 +68,8 @@ El modelo es una versión muy simplicidad de la arquitectura de VGG. Ya que en v
 Resultados:
 <img width="791" height="704" alt="Captura de pantalla 2026-04-19 225206" src="https://github.com/user-attachments/assets/ca75b488-ac94-4382-9b82-aef014cf4bfb" />
 
-Se evaluó el modelo utilizando las siguientes métricas:
+La selección de métricas para la evaluación del modelo se basa en “An Introduction to ROC Analysis” de Fawcett (2005) el cual menciona que el “acurracy” no abarca toda la complejidad de problemas de clasificación, ya que puede existir diferentes orígenes de los errores o desbalanceo en los datos. Es por esto que el modelo se evaluó el modelo utilizando las siguientes métricas:
+
  - Precisión: Determina que tan acertado es el modelo cuando predice una "positive label", en el caso de la multiclase se determina que todas aquellas clases que no son la que corresponde son "negative, en vez de usar un enfoque binario como es el caso de usar solo dos clases.
  - Recall: De todas las "positive instances" que existen cuantas identificaste correctamente. Por ejemplo si hay 1000 imágenes de "california_poppy" cuantas detectaste.
  - F1-score: Es el balance entre las dos métricas anteriores.
@@ -113,7 +114,9 @@ La matriz de confusión muestra un buen desempeño con las clases 7, 8 y 10, no 
 En conclusión, el modelo se desempeña de buena manera en el aprendizaje de algunas clases, pero aquellas que son similares presentan un desafío para el modelo. Como mejora futura y con la finalidad de mejorar en estás clases problemáticas se propone el uso de un modelo más robusto más apegado a VGG11 o VGG16.
 
 ## Referencias
+Fawcett, T. (2005). An introduction to ROC analysis. Pattern Recognition Letters, 27(8), 861-874. https://doi.org/10.1016/j.patrec.2005.10.010
 
 Ioffe, S., & Szegedy, C. (2015, 11 febrero). Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. arXiv.org. https://arxiv.org/abs/1502.03167
 
 Simonyan, K., & Zisserman, A. (2014, 4 septiembre). Very Deep Convolutional Networks for Large-Scale Image Recognition. arXiv.org. https://arxiv.org/abs/1409.1556
+
