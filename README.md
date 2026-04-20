@@ -42,3 +42,76 @@ La razón de selección de estos filtros se debe a que estos solo alteran la geo
 Esto genera nuevas imágenes que se suman al conjunto ya establecido de train, con la finalidad de enseñar de mejor manera al modelo. Estos métodos fueron aplicados en el código contenido en “Flores Data augmentation.ipynb”.
 
 [Data Augmentation notebook](https://colab.research.google.com/drive/1A9FnXfncx8jqNY-BCPW2m2FVZmCh0fFB?usp=sharing)
+
+
+## Modelos
+Primera iteración:
+
+Para el primer modelo se utilizó una Red Neuronal Convolucional (CNN) basándose en una arquitectura VGG, extraída de "Very Deep Convolutional Networks for Large-Scale Image Recognition" por Simonyan y Zisserman (2014).
+
+El modelo es una versión muy simplicidad de la arquitectura de VGG. Ya que en ves de utilizar 64,128,256,512 y 512 canales, utiliza 32,64 y 64, esto se hizo con la finalidad de reducir la complejidad del modelo y poder hacer iteraciones con mayor facilidad. La descripción del modelo se encuentra a continuación:
+
+- Input Shape, 120 x 120 pixeles y es rgb.
+- Capa Conv2D con 32 filtros: Tamaño de kernel (3, 3), padding "same" y función de activación ReLU
+- Capa Conv2D con 32 filtros: Tamaño de kernel (3, 3), padding "same" y función de activación ReLU
+- Capa MaxPooling2D: Tamaño de pool (2, 2)
+- Capa Conv2D con 64: filtros: Tamaño de kernel (3, 3), padding "same" y función de activación ReLU
+- Capa Conv2D con 64: filtros: Tamaño de kernel (3, 3), padding "same" y función de activación ReLU
+- Capa MaxPooling2D: Tamaño de pool (2, 2)
+- Capa GlobalAveragePooling2D: Convierte las caracteristicas 2D a un vector plano.
+- Capa Densa: Con 64 unidades y función de activación ReLU
+- Capa Dropout: Con tasa de 0.5
+- Capa Densa: Con 13 unidades y función de activación softmax
+
+Resultados:
+<img width="791" height="704" alt="Captura de pantalla 2026-04-19 225206" src="https://github.com/user-attachments/assets/ca75b488-ac94-4382-9b82-aef014cf4bfb" />
+
+Se evaluó el modelo utilizando las siguientes métricas:
+ - Precisión: Determina que tan acertado es el modelo cuando predice una "positive label", en el caso de la multiclase se determina que todas aquellas clases que no son la que corresponde son "negative, en vez de usar un enfoque binario como es el caso de usar solo dos clases.
+ - Recall: De todas las "positive instances" que existen cuantas identificaste correctamente. Por ejemplo si hay 1000 imágenes de "california_poppy" cuantas detectaste.
+ - F1-score: Es el balance entre las dos métricas anteriores.
+ - Acurracy: Es la proporción de precciones correctas entre predicciones totales.
+
+El soporte solo nos indica el número de ejemplos reales de la clase, no es una métrica.
+  
+| Clase | Precisión | Recall | F1-score | Soporte |
+| ----- | --------- | ------ | -------- | ------- |
+| 0     | 0.64      | 0.62   | 0.63     | 200     |
+| 1     | 0.56      | 0.33   | 0.42     | 196     |
+| 2     | 0.53      | 0.42   | 0.47     | 205     |
+| 3     | 0.65      | 0.61   | 0.63     | 196     |
+| 4     | 0.47      | 0.40   | 0.43     | 210     |
+| 5     | 0.50      | 0.71   | 0.59     | 194     |
+| 6     | 0.69      | 0.62   | 0.65     | 211     |
+| 7     | 0.78      | 0.81   | 0.79     | 211     |
+| 8     | 0.52      | 0.72   | 0.60     | 210     |
+| 9     | 0.59      | 0.63   | 0.61     | 214     |
+| 10    | 0.55      | 0.80   | 0.65     | 206     |
+| 11    | 0.64      | 0.58   | 0.61     | 210     |
+| 12    | 0.54      | 0.36   | 0.43     | 197     |
+
+
+
+| Métrica                  | Valor |
+| ------------------------ | ----- |
+| Accuracy                 | 0.59  |
+| Macro Avg (Precision)    | 0.59  |
+| Macro Avg (Recall)       | 0.58  |
+| Macro Avg (F1-score)     | 0.58  |
+| Weighted Avg (Precision) | 0.59  |
+| Weighted Avg (Recall)    | 0.59  |
+| Weighted Avg (F1-score)  | 0.58  |
+
+Conclusiones:
+
+El “accuracy” del modelo es de 0.59, es decir que, aproximadamente, acierta cada 6 de 10 imágenes, un rendimiento intermedio, además el tanto el “recall”, “precision” y “F1” son prácticamente iguales lo que indica que el modelo no se encuentra fuertemente sesgado.	
+
+La matriz de confusión muestra un buen desempeño con las clases 7, 8 y 10, no obstante, posee grandes confusiones con las clases 1,2 y 4, además de errores con la clase 12. Esto se puede deber a que las clases 7, 8 y 10 son de colores y formas diferentes a las otras clases, no obstante, la clase 1,2 y 4 tienen colores y formas muy similares, siendo todas ellas de un amarillo/naranja. 
+
+En conclusión, el modelo se desempeña de buena manera en el aprendizaje de algunas clases, pero aquellas que son similares presentan un desafío para el modelo. Como mejora futura y con la finalidad de mejorar en estás clases problemáticas se propone el uso de un modelo más robusto más apegado a VGG11 o VGG16.
+
+## Referencias
+
+Ioffe, S., & Szegedy, C. (2015, 11 febrero). Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. arXiv.org. https://arxiv.org/abs/1502.03167
+
+Simonyan, K., & Zisserman, A. (2014, 4 septiembre). Very Deep Convolutional Networks for Large-Scale Image Recognition. arXiv.org. https://arxiv.org/abs/1409.1556
