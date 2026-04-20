@@ -39,14 +39,15 @@ Para incrementar la cantidad de datos (imágenes) con las que se entrenará al m
 
 La razón de selección de estos filtros se debe a que estos solo alteran la geometría de las imágenes, representando la variedad de perspectiva, tamaño o posición que pueden poseer las flores en la vida real. Se excluyeron filtros de corrección de color, ya que el color de las flores es algo crucial en su clasificación y pueden afectar al resultado que se busca.
 
-Esto genera nuevas imágenes que se suman al conjunto ya establecido de train, con la finalidad de enseñar de mejor manera al modelo. Estos métodos fueron aplicados en el código contenido en “Flores Data augmentation.ipynb”.
+Esto genera nuevas imágenes que se suman al conjunto ya establecido de train, con la finalidad de enseñar de mejor manera al modelo. Estos métodos fueron aplicados en el código contenido en “Flores_Data_augmentation_and_first_model.ipynb".
 
-[Data Augmentation notebook](https://colab.research.google.com/drive/1A9FnXfncx8jqNY-BCPW2m2FVZmCh0fFB?usp=sharing)
+[First model notebook](https://colab.research.google.com/drive/1A9FnXfncx8jqNY-BCPW2m2FVZmCh0fFB?usp=sharing)
 
 
 ## Modelos
 Primera iteración:
-
+El primer modelo y sus resultados puede ser consultado en el archivo "Flores_Data_augmentation_and_first_model.ipynb" que se encuentra en este repositorio, o en el siguiente notebook:
+[First model notebook](https://colab.research.google.com/drive/1A9FnXfncx8jqNY-BCPW2m2FVZmCh0fFB?usp=sharing)
 Para el primer modelo se utilizó una Red Neuronal Convolucional (CNN) basándose en una arquitectura VGG, extraída de "Very Deep Convolutional Networks for Large-Scale Image Recognition" por Simonyan y Zisserman (2014).
 
 El modelo es una versión muy simplicidad de la arquitectura de VGG. Ya que en ves de utilizar 64,128,256,512 y 512 canales, utiliza 32,64 y 64, esto se hizo con la finalidad de reducir la complejidad del modelo y poder hacer iteraciones con mayor facilidad. La descripción del modelo se encuentra a continuación:
