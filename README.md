@@ -48,6 +48,7 @@ Esto genera nuevas imágenes que se suman al conjunto ya establecido de train, c
 Primera iteración:
 El primer modelo y sus resultados puede ser consultado en el archivo "Flores_Data_augmentation_and_first_model.ipynb" que se encuentra en este repositorio, o en el siguiente notebook:
 [First model notebook](https://colab.research.google.com/drive/1A9FnXfncx8jqNY-BCPW2m2FVZmCh0fFB?usp=sharing)
+
 Para el primer modelo se utilizó una Red Neuronal Convolucional (CNN) basándose en una arquitectura VGG, extraída de "Very Deep Convolutional Networks for Large-Scale Image Recognition" por Simonyan y Zisserman (2014).
 
 El modelo es una versión muy simplicidad de la arquitectura de VGG. Ya que en ves de utilizar 64,128,256,512 y 512 canales, utiliza 32,64 y 64, esto se hizo con la finalidad de reducir la complejidad del modelo y poder hacer iteraciones con mayor facilidad. La descripción del modelo se encuentra a continuación:
