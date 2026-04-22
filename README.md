@@ -126,7 +126,7 @@ Asimismo, el modelo entrenado se encuentra disponible en:
 Si deseas correr el modelo usa:
 [AppVGG11](app2.py)
 
-Para la segunda iterración se implmento un VGG 11, además de añadir batch normalization para estandarizar los datos dentro de la red y mejorar el aprendizaje del modelo. La descripción a detalle del modelo se presenta a continuación, así como una imagen del mismo:
+Para la segunda iterración se implmento un VGG 11, quitando el últimmo bloque de 512, además de añadir batch normalization para estandarizar los datos dentro de la red y mejorar el aprendizaje del modelo. La descripción a detalle del modelo se presenta a continuación, así como una imagen del mismo:
 
 <img width="566" height="89" alt="image" src="https://github.com/user-attachments/assets/faacc143-1a4a-4746-b0f4-ece1ac8bb88e" />
 
