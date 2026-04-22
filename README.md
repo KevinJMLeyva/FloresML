@@ -117,6 +117,14 @@ La matriz de confusión muestra un buen desempeño con las clases 7, 8 y 10, no 
 En conclusión, el modelo se desempeña de buena manera en el aprendizaje de algunas clases, pero aquellas que son similares presentan un desafío para el modelo. Como mejora futura y con la finalidad de mejorar en estás clases problemáticas se propone el uso de un modelo más robusto más apegado a VGG11 o VGG16.
 
 ### Segunda iteración:
+El modelo y sus resultados se pueden consultar en el siguiente notebook:
+[Modelo VGG-11](florecitas-vgg-11.ipynb)
+
+Asimismo, el modelo entrenado se encuentra disponible en:
+[Modelo entrenado](mi_modelo%20(1).keras)
+
+Si deseas correr el modelo usa:
+[AppVGG11](app2.py)
 
 Para la segunda iterración se implmento un VGG 11, además de añadir batch normalization para estandarizar los datos dentro de la red y mejorar el aprendizaje del modelo. La descripción a detalle del modelo se presenta a continuación, así como una imagen del mismo:
 
