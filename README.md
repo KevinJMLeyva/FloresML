@@ -116,6 +116,79 @@ La matriz de confusión muestra un buen desempeño con las clases 7, 8 y 10, no 
 
 En conclusión, el modelo se desempeña de buena manera en el aprendizaje de algunas clases, pero aquellas que son similares presentan un desafío para el modelo. Como mejora futura y con la finalidad de mejorar en estás clases problemáticas se propone el uso de un modelo más robusto más apegado a VGG11 o VGG16.
 
+### Segunda iteración:
+
+Para la segunda iterración se implmento un VGG 11, además de añadir batch normalization para estandarizar los datos dentro de la red y mejorar el aprendizaje del modelo .La descripción a detalle del modelo se presenta a continuación, así como una imagen del mismo:
+
+<img width="566" height="89" alt="image" src="https://github.com/user-attachments/assets/faacc143-1a4a-4746-b0f4-ece1ac8bb88e" />
+
+
+- Input Shape: Imágenes de 120 x 120 píxeles en formato RGB.
+#### Bloque 1
+- Capa Conv2D con 64 filtros: kernel (3,3), padding "same"
+- BatchNormalization
+- Activación ReLU
+- Capa Conv2D con 64 filtros: kernel (3,3), padding "same"
+- BatchNormalization
+- Activación ReLU
+- Capa MaxPooling2D: pool (2,2)
+#### Bloque 2
+- Capa Conv2D con 128 filtros: kernel (3,3), padding "same"
+- BatchNormalization
+Activación ReLU
+- Capa Conv2D con 128 filtros: kernel (3,3), padding "same"
+- BatchNormalization
+- Activación ReLU
+- Capa MaxPooling2D: pool (2,2)
+#### Bloque 3
+- Capa Conv2D con 256 filtros: kernel (3,3), padding "same"
+- BatchNormalization
+- Activación ReLU
+- Capa Conv2D con 256 filtros: kernel (3,3), padding "same"
+- BatchNormalization
+- Activación ReLU
+- Capa MaxPooling2D: pool (2,2)
+#### Bloque 4
+- Capa Conv2D con 512 filtros: kernel (3,3), padding "same"
+- BatchNormalization
+- Activación ReLU
+- Capa Conv2D con 512 filtros: kernel (3,3), padding "same"
+- BatchNormalization
+- Activación ReLU
+- Capa MaxPooling2D: pool (2,2)
+#### Clasificador
+- Capa GlobalAveragePooling2D: Convierte los mapas de características en un vector
+- Capa Densa: 256 unidades con activación ReLU
+- Capa Dropout: tasa de 0.5 (para reducir overfitting)
+- Capa Densa final: 13 unidades con activación softmax (una por cada clase de flor)
+
+### Resultados:
+              precision    recall  f1-score   support
+
+           0       0.94      0.91      0.92       200
+           1       0.69      0.73      0.71       196
+           2       0.85      0.78      0.81       205
+           3       0.93      0.68      0.79       196
+           4       1.00      0.09      0.16       210
+           5       1.00      0.10      0.18       194
+           6       0.97      0.91      0.94       211
+           7       1.00      0.55      0.71       211
+           8       0.88      0.65      0.75       210
+           9       0.92      0.49      0.64       200
+          10       0.47      1.00      0.64       206
+          11       0.99      0.85      0.92       210
+          12       0.29      1.00      0.45       197
+
+    accuracy                           0.67      2646
+   macro avg       0.84      0.67      0.66      2646
+weighted avg       0.84      0.67      0.66      2646
+#### Matriz de confusión:
+<img width="799" height="719" alt="image" src="https://github.com/user-attachments/assets/2fbc96fb-504d-4f73-a82f-25f01baea9de" />
+
+### Conclusiones:
+
+
+
 ## Referencias
 Fawcett, T. (2005). An introduction to ROC analysis. Pattern Recognition Letters, 27(8), 861-874. https://doi.org/10.1016/j.patrec.2005.10.010
 
@@ -123,3 +196,4 @@ Ioffe, S., & Szegedy, C. (2015, 11 febrero). Batch Normalization: Accelerating D
 
 Simonyan, K., & Zisserman, A. (2014, 4 septiembre). Very Deep Convolutional Networks for Large-Scale Image Recognition. arXiv.org. https://arxiv.org/abs/1409.1556
 
+Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., & Salakhutdinov, R. (2014). Dropout: A simple way to prevent neural networks from overfitting. Journal of Machine Learning Research, 15(1), 1929–1958.
