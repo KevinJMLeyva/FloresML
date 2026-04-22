@@ -45,7 +45,7 @@ Esto genera nuevas imágenes que se suman al conjunto ya establecido de train, c
 
 
 ## Modelos
-### Primera iteración:
+## Primera iteración:
 El primer modelo y sus resultados puede ser consultado en el archivo "Flores_Data_augmentation_and_first_model.ipynb" que se encuentra en este repositorio, o en el siguiente notebook:
 [First model notebook](https://colab.research.google.com/drive/1A9FnXfncx8jqNY-BCPW2m2FVZmCh0fFB?usp=sharing)
 
@@ -116,7 +116,7 @@ La matriz de confusión muestra un buen desempeño con las clases 7, 8 y 10, no 
 
 En conclusión, el modelo se desempeña de buena manera en el aprendizaje de algunas clases, pero aquellas que son similares presentan un desafío para el modelo. Como mejora futura y con la finalidad de mejorar en estás clases problemáticas se propone el uso de un modelo más robusto más apegado a VGG11 o VGG16.
 
-### Segunda iteración:
+## Segunda iteración:
 El modelo y sus resultados se pueden consultar en el siguiente notebook:
 [Modelo VGG-11](florecitas-vgg-11.ipynb)
 
