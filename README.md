@@ -124,51 +124,52 @@ Asimismo, el modelo entrenado se encuentra disponible en:
 [Modelo entrenado](mi_modelo%20(1).keras)
 
 Si deseas correr el modelo usa:
-[AppVGG11](app2.py)
+[AppVGG11](app.py)
 
-Para la segunda iterración se implmento un VGG 11, quitando el últimmo bloque de 512, además de añadir batch normalization para estandarizar los datos dentro de la red y mejorar el aprendizaje del modelo. La descripción a detalle del modelo se presenta a continuación, así como una imagen del mismo:
+Para la segunda iteración se implmento un VGG 11, quitando el últimmo bloque de 512, además de añadir batch normalization para estandarizar los datos dentro de la red y mejorar el aprendizaje del modelo. La descripción a detalle del modelo se presenta a continuación, así como una imagen del mismo:
 
 <img width="566" height="89" alt="image" src="https://github.com/user-attachments/assets/faacc143-1a4a-4746-b0f4-ece1ac8bb88e" />
 
 
+
 - Input Shape: Imágenes de 120 x 120 píxeles en formato RGB.
 #### Bloque 1
-- Capa Conv2D con 64 filtros: kernel (3,3), padding "same"
-- BatchNormalization
-- Activación ReLU
-- Capa Conv2D con 64 filtros: kernel (3,3), padding "same"
-- BatchNormalization
-- Activación ReLU
-- Capa MaxPooling2D: pool (2,2)
+- Capa Conv2D con 64 filtros: kernel (3,3), padding "same".
+- BatchNormalization.
+- Activación ReLU.
+- Capa Conv2D con 64 filtros: kernel (3,3), padding "same".
+- BatchNormalization.
+- Activación ReLU.
+- Capa MaxPooling2D: pool (2,2).
 #### Bloque 2
-- Capa Conv2D con 128 filtros: kernel (3,3), padding "same"
-- BatchNormalization
-Activación ReLU
-- Capa Conv2D con 128 filtros: kernel (3,3), padding "same"
-- BatchNormalization
-- Activación ReLU
-- Capa MaxPooling2D: pool (2,2)
+- Capa Conv2D con 128 filtros: kernel (3,3), padding "same".
+- BatchNormalization.
+- Activación ReLU.
+- Capa Conv2D con 128 filtros: kernel (3,3), padding "same".
+- BatchNormalization.
+- Activación ReLU.
+- Capa MaxPooling2D: pool (2,2).
 #### Bloque 3
-- Capa Conv2D con 256 filtros: kernel (3,3), padding "same"
-- BatchNormalization
-- Activación ReLU
-- Capa Conv2D con 256 filtros: kernel (3,3), padding "same"
-- BatchNormalization
-- Activación ReLU
-- Capa MaxPooling2D: pool (2,2)
+- Capa Conv2D con 256 filtros: kernel (3,3), padding "same".
+- BatchNormalization.
+- Activación ReLU.
+- Capa Conv2D con 256 filtros: kernel (3,3), padding "same".
+- BatchNormalization.
+- Activación ReLU.
+- Capa MaxPooling2D: pool (2,2).
 #### Bloque 4
-- Capa Conv2D con 512 filtros: kernel (3,3), padding "same"
-- BatchNormalization
-- Activación ReLU
-- Capa Conv2D con 512 filtros: kernel (3,3), padding "same"
-- BatchNormalization
-- Activación ReLU
-- Capa MaxPooling2D: pool (2,2)
+- Capa Conv2D con 512 filtros: kernel (3,3), padding "same".
+- BatchNormalization.
+- Activación ReLU.
+- Capa Conv2D con 512 filtros: kernel (3,3), padding "same".
+- BatchNormalization.
+- Activación ReLU.
+- Capa MaxPooling2D: pool (2,2).
 #### Clasificador
-- Capa GlobalAveragePooling2D: Convierte los mapas de características en un vector
-- Capa Densa: 256 unidades con activación ReLU
-- Capa Dropout: tasa de 0.5 (para reducir overfitting)
-- Capa Densa final: 13 unidades con activación softmax (una por cada clase de flor)
+- Capa GlobalAveragePooling2D: Convierte los mapas de características en un vector.
+- Capa Densa: 256 unidades con activación ReLU.
+- Capa Dropout: tasa de 0.5.
+- Capa Densa final: 13 unidades con activación softmax.
 
 ### Resultados:
 | Clase | Precision | Recall | F1-score | Support |
@@ -205,9 +206,83 @@ El “accuracy” del modelo es de 0.67, es decir que, aproximadamente, acierta 
 
 La matriz de confusión muestra de manera clara la confusión que existe con la clase 12 (water_lily), clase que tiene una precision de 0.29, y que no logra identificar de manera correcta la clase 4,5, esto se respalda por su bajo recall,0.09 y 0.10 ,y alta preccision mostrando que el modelo presenta mucho falsos positivos.
 
-En conclusión, el modelo fue una mejora a la anterior versión, pero no obtuvo los resultados esperados, e incremento la confusión con la clase 12 (water_lily). Para la siguiente iteración se implementará un VGG1 con transfer learning, con la finalidad de visualizar la eficacia de está técnica. 
+En conclusión, el modelo fue una mejora a la anterior versión, pero no obtuvo los resultados esperados, e incremento la confusión con la clase 12 (water_lily). Para la siguiente iteración se implementará un VGG16 con transfer learning, con la finalidad de visualizar la eficacia del transfer learning.
 
+## Tercera iteración:
+El modelo y sus resultados se pueden consultar en el siguiente notebook:
+[Modelo VGG-16](florecitas-vgg-16.ipynb)
 
+Asimismo, el modelo entrenado se encuentra disponible en:
+[Modelo transfer learning](mi_modelo2%20(2).keras)
+
+Si deseas correr el modelo usa:
+[AppVGG16](app2.py)
+
+Para la terecera iteración se implementó un modelo basado en VGG16 utilizando transfer learning. En este caso, se utilizó la red ya preentrenada con pesos de ImageNet, eliminando la parte superior (top) y congelando sus capas convolucionales, con el objetivo de aprovechar las características previamente aprendidas, para que funcione con las flores se agrego un clasificador personalizado.
+
+La descripción a detalle del modelo se presenta a continuación, así como una imagen de su arquitectura:
+<img width="1280" height="485" alt="image" src="https://github.com/user-attachments/assets/b9883d00-a837-4f5f-9058-a737283a36d1" />
+
+- Input Shape: Imágenes de 120 x 120 píxeles en formato RGB.
+####  Base convolucional (VGG16)
+- Modelo VGG16 preentrenado en ImageNet.
+- Include_top=False.
+- Todas las capas se congelan (trainable = False).
+
+####   Clasificador personalizado
+- Capa GlobalAveragePooling2D: Convierte los mapas de características en un vector.
+- Capa Densa: 256 unidades con activación ReLU.
+- Capa Dropout: tasa de 0.5.
+- Capa Densa final: 13 unidades con activación softmax.
+
+### Resultados:
+| Clase | Precision | Recall | F1-score | Support |
+| ----- | --------- | ------ | -------- | ------- |
+| 0     | 0.86      | 0.90   | 0.88     | 200     |
+| 1     | 0.67      | 0.55   | 0.60     | 196     |
+| 2     | 0.76      | 0.74   | 0.75     | 205     |
+| 3     | 0.75      | 0.82   | 0.79     | 196     |
+| 4     | 0.73      | 0.80   | 0.76     | 210     |
+| 5     | 0.83      | 0.86   | 0.84     | 194     |
+| 6     | 0.92      | 0.91   | 0.91     | 211     |
+| 7     | 0.92      | 0.89   | 0.90     | 211     |
+| 8     | 0.74      | 0.75   | 0.75     | 210     |
+| 9     | 0.84      | 0.90   | 0.87     | 200     |
+| 10    | 0.92      | 0.89   | 0.91     | 206     |
+| 11    | 0.86      | 0.90   | 0.88     | 210     |
+| 12    | 0.84      | 0.73   | 0.78     | 197     |
+
+| Métrica                  | Valor |
+|--------------------------|-------|
+| Accuracy                 | 0.82  |
+| Macro Avg (Precision)    | 0.82  |
+| Macro Avg (Recall)       | 0.82  |
+| Macro Avg (F1-score)     | 0.82  |
+| Weighted Avg (Precision) | 0.82  |
+| Weighted Avg (Recall)    | 0.82  |
+| Weighted Avg (F1-score)  | 0.82  |
+
+#### Matriz de confusión:
+<img width="799" height="714" alt="image" src="https://github.com/user-attachments/assets/a6b64231-6e1a-4d7d-b049-20a0af80a365" />
+
+### Conclusiones:
+Comenzemos comparando con los resultados de las anteriores iteraciones:
+
+| Métrica                  | Modelo 1 | Modelo 2 | Modelo 3 |
+| ------------------------ | -------- | -------- | -------- |
+| Accuracy                 | 0.59     | 0.67     | 0.82     |
+| Macro Avg (Precision)    | 0.59     | 0.84     | 0.82     |
+| Macro Avg (Recall)       | 0.58     | 0.67     | 0.82     |
+| Macro Avg (F1-score)     | 0.58     | 0.66     | 0.82     |
+| Weighted Avg (Precision) | 0.59     | 0.84     | 0.82     |
+| Weighted Avg (Recall)    | 0.59     | 0.67     | 0.82     |
+| Weighted Avg (F1-score)  | 0.58     | 0.66     | 0.82     |
+
+Se puede observar que cada modelo tenía una mejora con respecto al anterior. Auque los modelos 1 y 2 seguían poseeyendo varias clases problematicas, mostrando un desbalance entre la eficacia para evaluar las clases.
+
+El tercer modelo logro un acurracy de 0.82, que se encuentra balanceado con su precision, recall y f1-score. Sin embargo el modelo posee algunas complicaciones con la clase 1 (calendula) y la matriz de confusión muestra algunas confusiones con la clase 4 (common_daisy) y 12 (water_lily).
+
+En conclusión el modelo presenta una mejora tanto en la precisión, 8 de cada 10 imagenes es correcto, y en el balance de clases.
 
 ## Referencias
 Fawcett, T. (2005). An introduction to ROC analysis. Pattern Recognition Letters, 27(8), 861-874. https://doi.org/10.1016/j.patrec.2005.10.010
