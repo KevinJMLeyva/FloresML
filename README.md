@@ -118,7 +118,7 @@ En conclusión, el modelo se desempeña de buena manera en el aprendizaje de alg
 
 ### Segunda iteración:
 
-Para la segunda iterración se implmento un VGG 11, además de añadir batch normalization para estandarizar los datos dentro de la red y mejorar el aprendizaje del modelo .La descripción a detalle del modelo se presenta a continuación, así como una imagen del mismo:
+Para la segunda iterración se implmento un VGG 11, además de añadir batch normalization para estandarizar los datos dentro de la red y mejorar el aprendizaje del modelo. La descripción a detalle del modelo se presenta a continuación, así como una imagen del mismo:
 
 <img width="566" height="89" alt="image" src="https://github.com/user-attachments/assets/faacc143-1a4a-4746-b0f4-ece1ac8bb88e" />
 
@@ -163,29 +163,41 @@ Activación ReLU
 - Capa Densa final: 13 unidades con activación softmax (una por cada clase de flor)
 
 ### Resultados:
-              precision    recall  f1-score   support
+| Clase | Precision | Recall | F1-score | Support |
+| ----- | --------- | ------ | -------- | ------- |
+| 0     | 0.94      | 0.91   | 0.92     | 200     |
+| 1     | 0.69      | 0.73   | 0.71     | 196     |
+| 2     | 0.85      | 0.78   | 0.81     | 205     |
+| 3     | 0.93      | 0.68   | 0.79     | 196     |
+| 4     | 1.00      | 0.09   | 0.16     | 210     |
+| 5     | 1.00      | 0.10   | 0.18     | 194     |
+| 6     | 0.97      | 0.91   | 0.94     | 211     |
+| 7     | 1.00      | 0.55   | 0.71     | 211     |
+| 8     | 0.88      | 0.65   | 0.75     | 210     |
+| 9     | 0.92      | 0.49   | 0.64     | 200     |
+| 10    | 0.47      | 1.00   | 0.64     | 206     |
+| 11    | 0.99      | 0.85   | 0.92     | 210     |
+| 12    | 0.29      | 1.00   | 0.45     | 197     |
 
-           0       0.94      0.91      0.92       200
-           1       0.69      0.73      0.71       196
-           2       0.85      0.78      0.81       205
-           3       0.93      0.68      0.79       196
-           4       1.00      0.09      0.16       210
-           5       1.00      0.10      0.18       194
-           6       0.97      0.91      0.94       211
-           7       1.00      0.55      0.71       211
-           8       0.88      0.65      0.75       210
-           9       0.92      0.49      0.64       200
-          10       0.47      1.00      0.64       206
-          11       0.99      0.85      0.92       210
-          12       0.29      1.00      0.45       197
+| Métrica                  | Valor |
+|--------------------------|-------|
+| Accuracy                 | 0.67  |
+| Macro Avg (Precision)    | 0.84  |
+| Macro Avg (Recall)       | 0.67  |
+| Macro Avg (F1-score)     | 0.66  |
+| Weighted Avg (Precision) | 0.84  |
+| Weighted Avg (Recall)    | 0.67  |
+| Weighted Avg (F1-score)  | 0.66  |
 
-    accuracy                           0.67      2646
-   macro avg       0.84      0.67      0.66      2646
-weighted avg       0.84      0.67      0.66      2646
 #### Matriz de confusión:
 <img width="799" height="719" alt="image" src="https://github.com/user-attachments/assets/2fbc96fb-504d-4f73-a82f-25f01baea9de" />
 
 ### Conclusiones:
+El “accuracy” del modelo es de 0.67, es decir que, aproximadamente, acierta cada 7 de 10 imágenes, una mejora de 0.08 con respecto al modelo anterior. Por otra parte la preccision es alta 0.84, pero el recall 0.67 y f1 0.66  lo indica que el modelo no se encuentra bien balanceado y posee dificultades para indentificar todas las classes de manera correcta.
+
+La matriz de confusión muestra de manera clara la confusión que existe con la clase 12 (water_lily), clase que tiene una precision de 0.29, y que no logra identificar de manera correcta la clase 4,5, esto se respalda por su bajo recall,0.09 y 0.10 ,y alta preccision mostrando que el modelo presenta mucho falsos positivos.
+
+En conclusión, el modelo fue una mejora a la anterior versión, pero no obtuvo los resultados esperados, e incremento la confusión con la clase 12 (water_lily). Para la siguiente iteración se implementará un VGG1 con transfer learning, con la finalidad de visualizar la eficacia de está técnica. 
 
 
 
